@@ -1,0 +1,32 @@
+<div class="container">
+  <h2>Person List</h2>
+  <a routerLink="/persons/add" class="btn btn-primary mb-3">Add Person</a>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Cell Phone</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let person of persons">
+        <td>{{ person.firstName }}</td>
+        <td>{{ person.lastName }}</td>
+        <td>{{ person.age }}</td>
+        <td>
+          <span *ngIf="person.cellPhone">
+            {{ person.cellPhone.brand }} {{ person.cellPhone.model }} ({{ person.cellPhone.number }})
+          </span>
+          <span *ngIf="!person.cellPhone">N/A</span>
+        </td>
+        <td>
+          <button [routerLink]="['/persons/edit', person.id]" class="btn btn-warning btn-sm me-2">Edit</button>
+          <button (click)="deletePerson(person.id!)" class="btn btn-danger btn-sm">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

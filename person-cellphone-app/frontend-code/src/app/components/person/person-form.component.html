@@ -1,0 +1,28 @@
+<div class="container">
+  <h2>{{ isEditMode ? 'Edit' : 'Add' }} Person</h2>
+  <form (ngSubmit)="savePerson()">
+    <div class="mb-3">
+      <label for="firstName" class="form-label">First Name</label>
+      <input type="text" class="form-control" id="firstName" [(ngModel)]="person.firstName" name="firstName" required>
+    </div>
+    <div class="mb-3">
+      <label for="lastName" class="form-label">Last Name</label>
+      <input type="text" class="form-control" id="lastName" [(ngModel)]="person.lastName" name="lastName" required>
+    </div>
+    <div class="mb-3">
+      <label for="age" class="form-label">Age</label>
+      <input type="number" class="form-control" id="age" [(ngModel)]="person.age" name="age" required>
+    </div>
+    <div class="mb-3">
+      <label for="cellPhone" class="form-label">Cell Phone</label>
+      <select class="form-select" id="cellPhone" [(ngModel)]="person.cellPhone" name="cellPhone" [compareWith]="compareCellPhones">
+        <option [ngValue]="null">Select a Cell Phone</option>
+        <option *ngFor="let phone of cellPhones" [ngValue]="phone">
+          {{ phone.brand }} {{ phone.model }} ({{ phone.number }})
+        </option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a routerLink="/persons" class="btn btn-secondary ms-2">Cancel</a>
+  </form>
+</div>

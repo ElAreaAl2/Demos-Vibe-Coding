@@ -1,0 +1,25 @@
+<div class="container">
+  <h2>Cell Phones List</h2>
+  <a routerLink="/cellphones/add" class="btn btn-primary mb-3">Add Cell Phone</a>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Number</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let phone of cellPhones">
+        <td>{{ phone.number }}</td>
+        <td>{{ phone.brand }}</td>
+        <td>{{ phone.model }}</td>
+        <td>
+          <button [routerLink]="['/cellphones/edit', phone.id]" class="btn btn-warning btn-sm me-2">Edit</button>
+          <button (click)="deleteCellPhone(phone.id!)" class="btn btn-danger btn-sm">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

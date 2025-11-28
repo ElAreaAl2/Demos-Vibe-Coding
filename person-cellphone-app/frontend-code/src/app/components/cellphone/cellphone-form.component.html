@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>{{ isEditMode ? 'Edit' : 'Add' }} Cell Phone</h2>
+  <form (ngSubmit)="saveCellPhone()">
+    <div class="mb-3">
+      <label for="number" class="form-label">Number</label>
+      <input type="text" class="form-control" id="number" [(ngModel)]="cellPhone.number" name="number" required>
+    </div>
+    <div class="mb-3">
+      <label for="brand" class="form-label">Brand</label>
+      <input type="text" class="form-control" id="brand" [(ngModel)]="cellPhone.brand" name="brand" required>
+    </div>
+    <div class="mb-3">
+      <label for="model" class="form-label">Model</label>
+      <input type="text" class="form-control" id="model" [(ngModel)]="cellPhone.model" name="model" required>
+    </div>
+    <button type="submit" class="btn btn-success">Save</button>
+    <a routerLink="/cellphones" class="btn btn-secondary ms-2">Cancel</a>
+  </form>
+</div>
